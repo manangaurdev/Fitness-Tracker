@@ -12,3 +12,14 @@ fitness_data = pd.read_csv("fitness_data.csv")
 
 # Display the data
 fitness_data
+
+
+# Task-2:- Checking for missing values (Now that we've read in the data, let's check whether it has any missing values.)
+
+# Does the data have any missing values?
+missing_values = fitness_data.isnull().sum()
+missing_values
+
+# Which rows have missing values?
+rows_with_missing_values = fitness_data[fitness_data.isnull().any(axis=1)]
+rows_with_missing_values
