@@ -64,3 +64,38 @@ fitness_data['sleep_debt'] = fitness_data['sleep_hours'] - 7.5
 fitness_data['cumulative_sleep_debt'] = fitness_data['sleep_debt'].cumsum()
 
 fitness_data
+
+
+# Task-5:- Visualizing trends across single variables (Lets visualize the distributions and trends of different columns in data)
+import plotly.express as px
+
+# Create a plotly histogram of the number of steps
+fig = px.histogram(fitness_data, x='steps', nbins=30, title='Histogram of Steps')
+fig.update_layout(
+    xaxis_title='Number of Steps',
+    yaxis_title='Frequency',
+    bargap=0.1
+)
+fig.show()
+
+
+# Create a line chart for the number of steps over time
+fig = px.line(fitness_data, x='date', y='steps', title='Number of Steps Over Time')
+fig.update_layout(
+    xaxis_title = 'Date',
+    yaxis_title = 'Number of Steps'
+)
+
+# Display the line chart
+fig.show()
+
+# Visualize weight trend over time
+fig = px.line(fitness_data, x='date', y='weight_kg', title='Weight Trend Over Time')
+
+fig.update_layout(
+    xaxis_title='Date',
+    yaxis_title='Weight (kg)'
+)
+
+# Display the line chart
+fig.show()
