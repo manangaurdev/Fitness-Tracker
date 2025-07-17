@@ -36,3 +36,31 @@ fitness_data['date'] = pd.to_datetime(fitness_data['date'])
 
 # Convert the data column to a datetime format
 fitness_data.dtypes
+
+
+
+# Task-4:- Create useful new columns (Sometimes we might want to rename columns with more descriptive names to be easier to interpret, or create new columns to measure things we are interested in)
+
+# Rename 'weight' and 'workout_duration' to have more descriptive names
+fitness_data.rename(columns={'weight': 'weight_kg', 'workout_duration': 'workout_duration_minutes'}, inplace=True)
+
+# Add a new column 'weight_lbs' converting weight from kilograms to pounds (1 kg = 2.20462 lbs)
+fitness_data['weight_lbs'] = fitness_data['weight_kg'] * 2.20462
+
+# Add a column to indicate the day of the week
+fitness_data['day_of_week'] = fitness_data['date'].dt.day_name()
+
+# Add a column to indicate weekends
+fitness_data['is_weekend'] = fitness_data['day_of_week'].isin(['Saturday', 'Sunday'])
+
+# Display the data
+fitness_data 
+
+
+# Add a new column 'sleep_debt' that calculates the difference between sleep_hours and a target of 7.5 hours
+fitness_data['sleep_debt'] = fitness_data['sleep_hours'] - 7.5
+
+# Create a new column that calculates the cumulative sleep debt
+fitness_data['cumulative_sleep_debt'] = fitness_data['sleep_debt'].cumsum()
+
+fitness_data
