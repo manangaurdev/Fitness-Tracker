@@ -23,3 +23,16 @@ missing_values
 # Which rows have missing values?
 rows_with_missing_values = fitness_data[fitness_data.isnull().any(axis=1)]
 rows_with_missing_values
+
+
+# Task-3:- Exploring the data (Lets start exploring our data by calculating summary statistics and confirming that our columns are of the correct data type)
+
+# What are the summary statistics?
+summary_statistics = fitness_data.describe()
+summary_statistics
+
+# Check the data types of each column
+fitness_data['date'] = pd.to_datetime(fitness_data['date']) 
+
+# Convert the data column to a datetime format
+fitness_data.dtypes
