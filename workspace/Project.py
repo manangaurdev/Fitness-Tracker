@@ -99,3 +99,23 @@ fig.update_layout(
 
 # Display the line chart
 fig.show()
+
+
+# Task-6:- Visualizing trends across multiple variables
+
+# Create a box plot for sleep hours comparing weekdays and weekends
+fig = px.box(fitness_data, x='is_weekend', y='sleep_hours',
+             title='Sleep Hours: Weekdays vs Weekends',
+             labels={'is_weekend': 'Is Weekend', 'sleep_hours': 'Sleep Hours'})
+
+# Display the box plot
+fig.show()
+
+# Visualize average sleep by day of week
+fig = px.bar(fitness_data.groupby('day_of_week')['sleep_hours'].mean().reset_index(),
+             x='day_of_week', y='sleep_hours',
+             title='Average Sleep Hours by Day of Week',
+             labels={'day_of_week': 'Day of Week', 'sleep_hours': 'Average Sleep Hours'})
+
+# Display the bar chart
+fig.show() 
